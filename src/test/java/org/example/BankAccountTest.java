@@ -39,4 +39,33 @@ class BankAccountTest {
         assertEquals(expectedValue,actualValue);
 
     }
+
+    @Test
+    void testMinimumBalance() {
+        float initialBalance = testAccount.getBalance();
+        float withdraw = 1100;
+        float expectedValue = initialBalance;
+        testAccount.withdraw(withdraw);
+        float actualValue = testAccount.getBalance();
+        assertEquals(expectedValue,actualValue);
+    }
+
+    @Test
+    void testNegativeWithdraw() {
+        float initialBalance = testAccount.getBalance();
+        float withdraw = -100;
+        float expectedValue = initialBalance;
+        testAccount.withdraw(withdraw);
+        float actualValue = testAccount.getBalance();
+        assertEquals(expectedValue,actualValue);
+    }
+    @Test
+    void testNegativeDeposit() {
+        float initialBalance = testAccount.getBalance();
+        float deposit = -100;
+        float expectedValue = initialBalance;
+        testAccount.deposit(deposit);
+        float actualValue = testAccount.getBalance();
+        assertEquals(expectedValue,actualValue);
+    }
 }

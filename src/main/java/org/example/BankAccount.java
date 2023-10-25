@@ -36,11 +36,24 @@ public class BankAccount {
     }
 
     public void deposit(float deposit) {
-        setBalance(getBalance()+deposit);
+        if(deposit<0) {
+            System.err.println("UNABLE TO PROCESS DEPOSIT: Cannot deposit negative values");
+        }
+        else {
+            setBalance(getBalance() + deposit);
+        }
     }
 
     public void withdraw(float withdraw) {
-        setBalance(getBalance()-withdraw);
+        if(withdraw<0) {
+            System.err.println("UNABLE TO PROCESS WITHDRAWAL: Cannot withdraw negative values");
+        }
+        else if(getBalance()-withdraw<minimumBalance) {
+            System.err.println("UNABLE TO PROCESS WITHDRAWAL: This withdrawal will go below your minimum balance");
+        }
+        else {
+            setBalance(getBalance() - withdraw);
+        }
     }
 
 
